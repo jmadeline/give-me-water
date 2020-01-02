@@ -64,4 +64,16 @@ plantRouter.put('/:id', (req, res) => {
   });
 });
 
+plantRouter.delete('/:id', (req, res) => {
+  const idPlant = req.params.id;
+
+  connection.query('DELETE FROM plant WHERE id = ?', [idPlant], err => {
+    if (err) {
+      res.status(400).send('error when deleting a plant');
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 module.exports = plantRouter;
