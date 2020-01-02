@@ -21,8 +21,8 @@ function PlantList() {
 
   return (
     <>
-      <Link to="editplant">
-        {plants.map((plant) => (
+      {plants.map((plant) => (
+        <Link to="editplant">
           <div key={plant.id} className="card m-5">
             <div className="row no-gutters">
               <div className="col-md-4">
@@ -38,8 +38,8 @@ function PlantList() {
               </div>
             </div>
           </div>
-        ))}
-      </Link>
+        </Link>
+      ))}
       <Link to="/newplant">
         <button type="button" className="btn btn-outline-success m-5">Ajouter une plante</button>
       </Link>
