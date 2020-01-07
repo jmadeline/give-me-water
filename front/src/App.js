@@ -12,7 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={PlantList} />
           <Route path="/newplant" component={NewPlant} />
-          <Route path="/editplant" component={EditPlant} />
+          <Route path="/editplant/:idPlant" component={EditPlant} />
         </Switch>
       </header>
     </div>

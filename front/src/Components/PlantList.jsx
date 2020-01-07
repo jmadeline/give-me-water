@@ -37,7 +37,7 @@ function PlantList() {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <Link to="editplant">
+                <Link to={`editplant/${plant.id}`}>
                   <h5 className="card-title">{plant.name}</h5>
                   <p className="card-text">{plant.description}</p>
                 </Link>

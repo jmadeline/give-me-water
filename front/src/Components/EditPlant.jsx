@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-function EditList() {
-  const [editForm, seteditForm] = useState({
+function EditList({ match }) {
+  console.log(match);
+  const [editForm, setEditForm] = useState({
+    id: null,
     name: '',
     spray: 1,
     description: '',
@@ -11,15 +13,26 @@ function EditList() {
     isSubmit: false,
   });
 
+  const { idPlant } = match.params;
+
+  console.log(match.params)
+  useEffect(() => {
+    axios.get(`http://localhost:8000/plants/${idPlant}`)
+      .then((res) => {
+        setEditForm(res.data);
+        console.log(res.data)
+      });
+  }, []);
+
   const handleSubmit = () => {
-    axios.put('http://localhost:8000/plants/', {
+    axios.put(`http://localhost:8000/plants/${idPlant}`, {
       name: editForm.name,
       spray: editForm.spray,
       description: editForm.description,
       picture: editForm.picture
     }).then((result) => {
       console.log(result);
-      seteditForm({ isSubmit: true });
+      setEditForm({ isSubmit: true });
     });
   }
 
@@ -36,14 +49,14 @@ function EditList() {
               type="text"
               className="form-control"
               value={editForm.name}
-              onChange={(event) => seteditForm({ ...editForm, name: event.target.value })} />
+              onChange={(event) => setEditForm({ ...editForm, name: event.target.value })} />
           </div>
           <div className="form-group">
             <label>Fréquence d'arrosage</label>
             <select
               className="form-control"
               value={editForm.spray}
-              onChange={(event) => seteditForm({ ...editForm, spray: event.target.value })}
+              onChange={(event) => setEditForm({ ...editForm, spray: event.target.value })}
             >
               {Array.from(Array(30)).map((_, index) => {
                 return <option key={index} value={index + 1}>{index + 1}</option>
@@ -56,7 +69,7 @@ function EditList() {
               type="text"
               className="form-control"
               value={editForm.description}
-              onChange={(event) => { seteditForm({ ...editForm, description: event.target.value }) }} />
+              onChange={(event) => { setEditForm({ ...editForm, description: event.target.value }) }} />
           </div>
 
           <button
