@@ -1,5 +1,7 @@
 const express = require('express');
 const connection = require('../database/conf');
+const multer = require('multer');
+const path = require('path');
 const Joi = require('@hapi/joi');
 const getPlant = require('../database/get-plant');
 
@@ -16,6 +18,17 @@ const schema = Joi.object({
   description: Joi.string(),
   picture: Joi.string()
 });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './src/public/uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `picture-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+const upload = multer({ storage });
 
 const plantRouter = express.Router();
 
@@ -34,14 +47,17 @@ plantRouter.get('/:id', async (req, res) => {
   res.status(200).send(plant);
 });
 
-plantRouter.post('/', (req, res) => {
+plantRouter.post('/', upload.single('picture'), (req, res) => {
   const validation = schema.validate(req.body);
+  const { name, spray, description } = req.body;
 
   if (validation.error) {
     return res.status(400).send({ error: validation.error.details[0].message });
   }
+  const picture = req.file.filename;
 
-  connection.query('INSERT INTO plant SET ?', req.body, async (error, rows) => {
+  connection.query(`INSERT INTO plant (name, spray, description, picture) 
+    VALUES(? , ? , ?, ? )`, [name, spray, description, picture], async (error, rows) => {
     if (error) {
       res.status(400).send({ error: 'error when creating a plant' });
     } else {
