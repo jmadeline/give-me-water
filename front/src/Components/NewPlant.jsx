@@ -15,7 +15,7 @@ function NewPlant() {
     const formData = new FormData();
 
     formData.append('name', form.name);
-    formData.append('spary', form.spray);
+    formData.append('spray', form.spray);
     formData.append('description', form.description);
     formData.append('picture', form.picture);
 
@@ -39,7 +39,7 @@ function NewPlant() {
         <div className="file-upload-wrapper">
           <input
             type="file"
-            id="ppicture"
+            id="picture"
             className="file-upload"
             onChange={(event) => setForm({ ...form, picture: event.target.files[0] })}
           />
