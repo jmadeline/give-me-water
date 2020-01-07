@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import './EditPlant.css';
 
 function EditList({ match }) {
-  console.log(match);
   const [editForm, setEditForm] = useState({
     id: null,
     name: '',
@@ -15,12 +15,10 @@ function EditList({ match }) {
 
   const { idPlant } = match.params;
 
-  console.log(match.params)
   useEffect(() => {
     axios.get(`http://localhost:8000/plants/${idPlant}`)
       .then((res) => {
         setEditForm(res.data);
-        console.log(res.data)
       });
   }, []);
 
