@@ -7,6 +7,7 @@ const plantRouter = require('./routes/plants');
 const port = 8000;
 
 const app = express();
+app.use(express.static('src/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors({

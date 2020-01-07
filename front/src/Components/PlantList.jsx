@@ -16,6 +16,7 @@ function PlantList() {
     axios.get('http://localhost:8000/plants')
       .then((res) => {
         setPlants(res.data);
+        console.log(res.data);
       });
   }, []);
 
@@ -32,7 +33,7 @@ function PlantList() {
         <div key={plant.id} className="card m-5">
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img src={plant.picture} className="card-img" alt={plant.picture} />
+              <img src={`http://localhost:8000/uploads/${plant.picture}`} className="card-img" alt={plant.picture} />
             </div>
             <div className="col-md-8">
               <div className="card-body">
