@@ -12,15 +12,24 @@ function NewPlant() {
   });
 
   const handleSubmit = () => {
-    axios.post('http://localhost:8000/plants/', {
-      name: form.name,
-      spray: form.spray,
-      description: form.description,
-      picture: form.picture
-    }).then((result) => {
-      console.log(result);
-      setForm({ plantCreated: true });
-    });
+    const formData = new FormData();
+
+    formData.append('name', form.name);
+    formData.append('spary', form.spray);
+    formData.append('description', form.description);
+    formData.append('picture', form.picture);
+
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+
+    axios.post('http://localhost:8000/plants/', formData, config)
+      .then((result) => {
+        console.log(result);
+        setForm({ plantCreated: true });
+      });
   }
 
   return (
@@ -28,7 +37,12 @@ function NewPlant() {
       {form.plantCreated ? <Redirect to="/" /> : null}
       <div className="card m-5">
         <div className="file-upload-wrapper">
-          <input type="file" id="input-file-now" className="file-upload" />
+          <input
+            type="file"
+            id="ppicture"
+            className="file-upload"
+            onChange={(event) => setForm({ ...form, picture: event.target.files[0] })}
+          />
         </div>
         <div className="card-body">
           <div className="form-group">
