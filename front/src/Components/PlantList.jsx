@@ -19,27 +19,35 @@ function PlantList() {
       });
   }, []);
 
+  const deletingPlant = (idPlant) => {
+    axios.delete(`http://localhost:8000/plants/${idPlant}`)
+      .then((res) => {
+        console.log(res);
+      });
+  }
+
   return (
     <>
       {plants.map((plant) => (
-        <Link to="editplant">
-          <div key={plant.id} className="card m-5">
-            <div className="row no-gutters">
-              <div className="col-md-4">
-                <img src={plant.picture} className="card-img" alt={plant.picture} />
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
+        <div key={plant.id} className="card m-5">
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <img src={plant.picture} className="card-img" alt={plant.picture} />
+            </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <Link to="editplant">
                   <h5 className="card-title">{plant.name}</h5>
                   <p className="card-text">{plant.description}</p>
-                  <button type="button" className="btn btn-outline-primary">Arroser</button>
-                  <button type="button" className="btn btn-outline-danger">Dead</button>
-                </div>
+                </Link>
+                <button type="button" className="btn btn-outline-primary">Arroser</button>
+                <button type="button" className="btn btn-outline-danger" onClick={(e) => deletingPlant(plant.id)}>Dead</button>
               </div>
             </div>
           </div>
-        </Link>
-      ))}
+        </div>
+      ))
+      }
       <Link to="/newplant">
         <button type="button" className="btn btn-outline-success m-5">Ajouter une plante</button>
       </Link>
