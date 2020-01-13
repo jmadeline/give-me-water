@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './plantList.css';
 
 function PlantList() {
   const [plants, setPlants] = useState([{
@@ -30,7 +31,7 @@ function PlantList() {
   return (
     <>
       {plants.map((plant) => (
-        <div key={plant.id} className="card m-5">
+        <div key={plant.id} className="card mb-5">
           <div className="row no-gutters">
             <div className="col-md-4">
               <img src={`http://localhost:8000/uploads/${plant.picture}`} className="card-img" alt={plant.picture} />
@@ -49,9 +50,11 @@ function PlantList() {
         </div>
       ))
       }
-      <Link to="/newplant">
-        <button type="button" className="btn btn-outline-success m-5">Ajouter une plante</button>
-      </Link>
+      <div className="buttonAdd">
+        <Link to="/newplant">
+          <button type="button" className="btn btn-outline-success m-5">Ajouter une plante</button>
+        </Link>
+      </div>
     </>
   );
 }

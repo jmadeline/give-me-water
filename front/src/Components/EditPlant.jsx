@@ -35,7 +35,7 @@ function EditList({ match }) {
   }
 
   return (
-    <>
+    <div className="editPlant">
       <div className="card m-5">
         <img src={`http://localhost:8000/uploads/${editForm.picture}`} alt={editForm.picture} />
         <div className="file-upload-wrapper">
@@ -81,7 +81,7 @@ function EditList({ match }) {
           {editForm.isSubmit ? <Redirect to="/" /> : null}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

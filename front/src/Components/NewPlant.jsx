@@ -73,7 +73,6 @@ function NewPlant() {
               value={form.description}
               onChange={(event) => { setForm({ ...form, description: event.target.value }) }} />
           </div>
-
           <button
             type="submit"
             className="btn btn-outline-success"
