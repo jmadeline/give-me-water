@@ -34,7 +34,7 @@ function PlantList() {
         <div key={plant.id} className="card mb-5">
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img src={`http://localhost:8000/uploads/${plant.picture}`} className="card-img" alt={plant.picture} />
+              <img src={plant.picture ? `http://localhost:8000/uploads/${plant.picture}` : process.env.PUBLIC_URL + '/assets/images/placeholderImg.png'} className="card-img" alt={plant.picture} />
             </div>
             <div className="col-md-8">
               <div className="card-body">
