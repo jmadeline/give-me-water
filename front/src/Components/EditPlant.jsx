@@ -38,9 +38,8 @@ function EditList({ match }) {
     <div className="editPlant">
       <div className="card m-5">
         <img src={`http://localhost:8000/uploads/${editForm.picture}`} alt={editForm.picture} />
-        <div className="file-upload-wrapper">
-          <input type="file" id="input-file-now" className="file-upload" />
-        </div>
+        <label for="file" class="label-file">Choisir une image</label>
+        <input id="file" class="input-file" type="file"></input>
         <div className="card-body">
           <div className="form-group">
             <label>Nom de votre plante</label>
