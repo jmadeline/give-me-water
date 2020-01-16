@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './plantList.css';
+import './PlantList.css';
 
 function PlantList() {
   const [plants, setPlants] = useState([{
@@ -52,7 +52,7 @@ function PlantList() {
       }
       <div className="buttonAdd">
         <Link to="/newplant">
-          <button type="button" className="btn btn-outline-success m-5">Ajouter une plante</button>
+          <button type="button" className="btn btn-outline-success add">Ajouter une plante</button>
         </Link>
       </div>
     </>

@@ -1,0 +1,34 @@
+.card.mb-5:first-child {
+  margin-top: 15%; 
+}
+
+.card.mb-5 {
+  width: 70%;
+  background-color: #CBB8C7;
+  box-shadow: 0 0 10px grey;
+}
+
+.buttonAdd {
+  position: fixed;
+  top: 0;
+  height: 115px;
+  width: 100%;
+  background-color: #5e6664;
+}
+
+.btn.btn-outline-success.add {
+  position: fixed;
+  top: 35px;
+  left: 43%;
+  color: #dbe6ca;
+  border-color: #dbe6ca;
+}
+
+.btn.btn-outline-success.add:hover {
+  color: #9D849A;
+  background-color: #dbe6ca;
+}
+
+.card.mb-5:last-child {
+  margin-bottom: 250px;
+}
