@@ -37,7 +37,7 @@ function EditList({ match }) {
   return (
     <div className="editPlant">
       <div className="card m-5">
-        <img src={`http://localhost:8000/uploads/${editForm.picture}`} alt={editForm.picture} />
+        <img src={editForm.picture ? `http://localhost:8000/uploads/${editForm.picture}` : process.env.PUBLIC_URL + '/assets/images/placeholderImg.png'} alt={editForm.picture} />
         <label for="file" class="label-file">Choisir une image</label>
         <input id="file" class="input-file" type="file"></input>
         <div className="card-body">
