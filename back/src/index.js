@@ -3,14 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const plantRouter = require('./routes/plants');
-const { sendMail } = require('./sendMail');
+const notify = require('./crons/notify');
 const cron = require('node-cron');
 
-let counter = 1;
-cron.schedule('* * * * *', () => {
-  sendMail(`Hello world ${counter}`, "this is email body it can contain html also");
-  counter++;
-});
+cron.schedule('* * * * *', notify);
 
 const port = 8000;
 
