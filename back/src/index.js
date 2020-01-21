@@ -3,6 +3,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const plantRouter = require('./routes/plants');
+const { sendMail } = require('./sendMail');
+
+console.log('sending email...');
+sendMail("Hello world", "this is email body it can contain html also");
+console.log('email sent ✓');
 
 const port = 8000;
 
