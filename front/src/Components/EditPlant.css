@@ -18,6 +18,12 @@
   font-weight: bold;
   text-align: center;
 }
+
+.file-upload-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .label-file:hover {
   color: #CBB8C7;
 }

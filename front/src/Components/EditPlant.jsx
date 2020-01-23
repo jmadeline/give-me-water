@@ -20,7 +20,7 @@ function EditList({ match }) {
       .then((res) => {
         setEditForm(res.data);
       });
-  }, []);
+  }, [idPlant]);
 
   const handleSubmit = () => {
     axios.put(`http://localhost:8000/plants/${idPlant}`, {
@@ -38,8 +38,8 @@ function EditList({ match }) {
     <div className="editPlant">
       <div className="card m-5">
         <img src={editForm.picture ? `http://localhost:8000/uploads/${editForm.picture}` : process.env.PUBLIC_URL + '/assets/images/placeholderImg.png'} alt={editForm.picture} />
-        <label for="file" class="label-file">Choisir une image</label>
-        <input id="file" class="input-file" type="file"></input>
+        <label for="file" className="label-file">Choisir une image</label>
+        <input id="file" className="input-file" type="file"></input>
         <div className="card-body">
           <div className="form-group">
             <label>Nom de votre plante</label>

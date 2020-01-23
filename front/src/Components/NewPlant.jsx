@@ -36,15 +36,16 @@ function NewPlant() {
     <>
       {form.plantCreated ? <Redirect to="/" /> : null}
       <div className="card m-5">
-        <div className="file-upload-wrapper">
-          <input
-            type="file"
-            id="picture"
-            className="file-upload"
-            onChange={(event) => setForm({ ...form, picture: event.target.files[0] })}
-          />
-        </div>
         <div className="card-body">
+          <div className="file-upload-wrapper">
+            <label for="file" class="label-file">Choisir une image</label>
+            <input
+              id="file"
+              className="input-file"
+              type="file"
+              onChange={(event) => setForm({ ...form, picture: event.target.files[0] })}
+            />
+          </div>
           <div className="form-group">
             <label>Nom de votre plante</label>
             <input
