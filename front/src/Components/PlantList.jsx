@@ -42,8 +42,10 @@ function PlantList() {
                   <h5 className="card-title">{plant.name}</h5>
                   <p className="card-text">{plant.description}</p>
                 </Link>
-                <button type="button" className="btn btn-outline-primary">Arroser</button>
-                <button type="button" className="btn btn-outline-danger" onClick={(e) => deletingPlant(plant.id)}>Dead</button>
+                <div className="buttons">
+                  <button type="button" className="btn btn-outline-primary">Arroser</button>
+                  <button type="button" className="btn btn-outline-danger" onClick={(e) => deletingPlant(plant.id)}>Dead</button>
+                </div>
               </div>
             </div>
           </div>
